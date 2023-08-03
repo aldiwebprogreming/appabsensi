@@ -6,7 +6,7 @@ export default function Navbar2() {
     <div>
       <nav className="navbar navbar-light bg-danger">
         <div className="container">
-          <Link className="navbar-brand text-white" to="/">
+          <Link className="navbar-brand text-white" to="/home">
             <i className="fas fa-arrow-left"></i>
           </Link>
         </div>

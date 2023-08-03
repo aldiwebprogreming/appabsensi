@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar2 from "../components/Navbar2";
-import ContentMasuk from "../components/ContentMasuk";
+import ContentKeluar from "../components/ContentKeluar";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
-export default function Masuk() {
+export default function Keluar() {
   const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("nisn") == null) {
@@ -17,7 +17,7 @@ export default function Masuk() {
     <div>
       <Navbar2 />
       <div className="mt-2">
-        <ContentMasuk />
+        <ContentKeluar />
       </div>
       {/* <Footer /> */}
     </div>

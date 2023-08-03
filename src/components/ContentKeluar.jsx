@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Html5QrcodeScanner } from "html5-qrcode";
-import ScanSuksek from "./ScanSuksek";
 import ScanError from "./ScanError";
 import axios from "axios";
+import ScanSuksesKeluar from "./ScanSuksesKeluar";
 
 export default function ContentMasuk() {
   const [qrvalue, setqrValue] = useState("");
   const [qrerror, setqrError] = useState(false);
-  const [cekabsen, setcekabsen] = useState(false);
   const nisn = localStorage.getItem("nisn");
 
   const addAbsen = async () => {
     await axios
-      .post("http://localhost/backendabsensi/api/absensi", {
+      .post("http://localhost/backendabsensi/api/absensikeluar", {
         nisn: nisn,
       })
       .then(function (response) {
-        console.log(response.data);
-        if (response.data.body == "ready") {
-          setcekabsen(true);
-        } else {
-          setqrValue(true);
-        }
+        console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -42,6 +36,7 @@ export default function ContentMasuk() {
       scanner.clear();
 
       if (result == "masuk") {
+        setqrValue(result);
         addAbsen();
       } else {
         setqrError(true);
@@ -64,7 +59,7 @@ export default function ContentMasuk() {
       <div className="card" id="content-masuk">
         <div className="card-body">
           <h4 className="text-danger">
-            Scan Masuk <i className="fas fa-qrcode"></i>
+            Scan Keluar <i className="fas fa-qrcode"></i>
           </h4>
           <hr />
           <div className="card shadow" id="render">
@@ -79,7 +74,7 @@ export default function ContentMasuk() {
           </div>
           {qrvalue ? (
             <div>
-              <ScanSuksek />
+              <ScanSuksesKeluar />
             </div>
           ) : (
             ""
@@ -87,16 +82,6 @@ export default function ContentMasuk() {
           {qrerror ? (
             <div>
               <ScanError />
-            </div>
-          ) : (
-            ""
-          )}
-
-          {cekabsen ? (
-            <div>
-              <p className="text-danger text-center">
-                Mohon maaf anda sudah melakukan absensi
-              </p>
             </div>
           ) : (
             ""

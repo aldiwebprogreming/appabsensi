@@ -16,7 +16,7 @@ export default function ScanSuksek() {
             Selamat<br></br>Kahadiran anda <br></br>hari ini berhasil di catat
           </h3>
 
-          <Link to="/" className="btn btn-danger">
+          <Link to="/home" className="btn btn-danger">
             <i className="fas fa-arrow-left"></i> Kembali ke home
           </Link>
         </center>

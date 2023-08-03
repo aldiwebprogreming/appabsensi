@@ -23,13 +23,17 @@ export default function CardMenu() {
                 </div>
               </Link>
             </div>
+
             <div className="col-sm-4 col-4">
-              <div className="card bg-danger text-center text-white shadow">
-                <div className="card-body">
-                  <p>Absen Keluar</p>
+              <Link to={"/keluar"} style={{ textDecoration: "none" }}>
+                <div className="card bg-danger text-center text-white shadow">
+                  <div className="card-body">
+                    <p>Absen Keluar</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
+
             <div className="col-sm-4 col-4">
               <div className="card bg-danger text-center text-white shadow">
                 <div className="card-body">
